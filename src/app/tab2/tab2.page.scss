@@ -1,0 +1,39 @@
+ion-card {
+  padding-top: 15px;
+  .card-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 15px;
+  }
+
+  .coin {
+    padding: 5px 13px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    color: var(--ion-color-warning);
+
+    span {
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+  }
+
+  .coin-name {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  ion-card-content {
+    display: flex;
+    flex-direction: column;
+
+    ion-label {
+      font-size: 16px;
+
+      b {
+        color: var(--ion-color-dark-tint);
+      }
+    }
+  }
+}
