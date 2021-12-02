@@ -1,6 +1,13 @@
 ion-tab-button {
+  --color: var(--ion-color-warning);
   --color-selected: var(--ion-color-warning);
 
+  &.tab-selected {
+    ion-icon,
+    ion-label {
+      color: var(--ion-color-warning);
+    }
+  }
   ion-label {
     font-size: 14px;
     padding: 5px 0;
