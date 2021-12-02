@@ -1,0 +1,52 @@
+ion-avatar {
+  padding: 5px;
+  width: 50px;
+  height: 50px;
+  background: var(--ion-color-light);
+  --border-radius: 6px;
+}
+
+ion-label {
+  p {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    span {
+      color: var(--ion-color-light-shade);
+    }
+  }
+}
+
+ion-card {
+  padding: 10px 15px;
+  .card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .coin {
+      padding: 5px 13px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      color: var(--ion-color-warning);
+
+      span {
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    .coin-name {
+      color: var(--ion-color-dark-shade);
+    }
+
+    .star {
+      ion-icon {
+        font-size: 24px;
+      }
+    }
+  }
+}
