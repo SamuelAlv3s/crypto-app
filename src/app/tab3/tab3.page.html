@@ -1,37 +1,16 @@
 <ion-content>
-  <div class="custom-card">
-    <img src="assets/img.jpg" />
-    <span class="date">11/26/2021 10:07:08 AM</span>
-    <span class="card-info">Axie infinity Plot Sells for $2.5M</span>
-  </div>
+  <ng-template [ngIf]="news">
+    <div class="custom-card" *ngFor="let article of news">
+      <img *ngIf="article.urlToImage" [src]="article.urlToImage" />
+      <div *ngIf="!article.urlToImage" class="no-image"></div>
+      <span class="date">{{article.publishedAt | date: 'medium'}}</span>
+      <span class="card-info">{{article.title}}</span>
+    </div>
+  </ng-template>
 
-  <div class="custom-card">
-    <img src="assets/img.jpg" />
-    <span class="date">11/26/2021 10:07:08 AM</span>
-    <span class="card-info">Axie infinity Plot Sells for $2.5M</span>
-  </div>
-
-  <div class="custom-card">
-    <img src="assets/img.jpg" />
-    <span class="date">11/26/2021 10:07:08 AM</span>
-    <span class="card-info">Axie infinity Plot Sells for $2.5M</span>
-  </div>
-
-  <div class="custom-card">
-    <img src="assets/img.jpg" />
-    <span class="date">11/26/2021 10:07:08 AM</span>
-    <span class="card-info">Axie infinity Plot Sells for $2.5M</span>
-  </div>
-
-  <div class="custom-card">
-    <img src="assets/img.jpg" />
-    <span class="date">11/26/2021 10:07:08 AM</span>
-    <span class="card-info">Axie infinity Plot Sells for $2.5M</span>
-  </div>
-
-  <div class="custom-card">
-    <img src="assets/img.jpg" />
-    <span class="date">11/26/2021 10:07:08 AM</span>
-    <span class="card-info">Axie infinity Plot Sells for $2.5M</span>
-  </div>
+  <ng-template [ngIf]="!news">
+    <div class="loading-container">
+      <ion-spinner color="warning"></ion-spinner>
+    </div>
+  </ng-template>
 </ion-content>

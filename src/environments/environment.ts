@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  coinMarketCapApiKey: 'e62b9024-4342-451d-b844-7748494bf8ee',
+  newsKeyAPiKey: '7978a098024645d7b230feb7213069b6',
 };
 
 /*
