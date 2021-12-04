@@ -24,19 +24,7 @@ export class Tab1Page implements OnInit {
       console.log(res.data);
       this.coins = res.data;
 
-      const { value } = await Storage.get({ key: 'favorites' });
-
-      if (value) {
-        for (let item of JSON.parse(value)) {
-          for (let coin of this.coins) {
-            if (item.id === coin.id) {
-              if (item.favorite) {
-                coin.favorite = true;
-              }
-            }
-          }
-        }
-      }
+      await this.verifyAndMarkAsFavorite();
     });
 
     const { value } = await Storage.get({ key: 'userMoney' });
@@ -49,6 +37,22 @@ export class Tab1Page implements OnInit {
         key: 'userMoney',
         value: JSON.stringify(this.userMoney),
       });
+    }
+  }
+
+  async verifyAndMarkAsFavorite() {
+    const { value } = await Storage.get({ key: 'favorites' });
+
+    if (value) {
+      for (let item of JSON.parse(value)) {
+        for (let coin of this.coins) {
+          if (item.id === coin.id) {
+            if (item.favorite) {
+              coin.favorite = true;
+            }
+          }
+        }
+      }
     }
   }
 
@@ -95,10 +99,23 @@ export class Tab1Page implements OnInit {
     await toast.present();
   }
 
+  async showToastError(message: string) {
+    const toast = await this.toastCtrl.create({
+      message,
+      duration: 1000,
+      color: 'danger',
+      position: 'top',
+    });
+
+    await toast.present();
+  }
+
   doRefresh(ev) {
-    this.coinService.getCoins().subscribe((res) => {
+    this.coinService.getCoins().subscribe(async (res) => {
       this.coins = res.data;
       ev.target.complete();
+
+      await this.verifyAndMarkAsFavorite();
     });
   }
 
@@ -137,7 +154,7 @@ export class Tab1Page implements OnInit {
         });
         this.showToast('Successful purchase');
       } else {
-        this.showToast('Insufficient funds');
+        this.showToastError('Insufficient funds');
       }
     }
   }
@@ -161,8 +178,10 @@ export class Tab1Page implements OnInit {
 
     if (data) {
       if (data.getCoins) {
-        this.coinService.getCoins().subscribe((res) => {
+        this.coinService.getCoins().subscribe(async (res) => {
           this.coins = res.data;
+
+          await this.verifyAndMarkAsFavorite();
         });
       }
       this.userMoney = data.currentUserMoney;
