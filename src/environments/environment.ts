@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  coinMarketCapApiKey: 'e62b9024-4342-451d-b844-7748494bf8ee',
   newsKeyAPiKey: '7978a098024645d7b230feb7213069b6',
+  messariApiKey: 'c2426caf-0f6d-4f88-b128-179e9939fc83',
 };
 
 /*

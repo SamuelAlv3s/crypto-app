@@ -25,7 +25,13 @@ ion-card {
     align-items: center;
 
     .coin {
-      padding: 5px 13px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      min-width: 65px;
+      max-width: 65px;
+      padding: 5px 8px;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
       color: var(--ion-color-warning);
 
@@ -39,8 +45,15 @@ ion-card {
       font-size: 16px;
     }
 
-    .coin-name {
-      color: var(--ion-color-dark-shade);
+    .coin-info-text {
+      padding: 0 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .coin-name {
+        color: var(--ion-color-dark-shade);
+      }
     }
 
     .star {
