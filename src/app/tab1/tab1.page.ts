@@ -17,9 +17,23 @@ export class Tab1Page implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.coinService.getCoins().subscribe((res) => {
+    this.coinService.getCoins().subscribe(async (res) => {
       console.log(res.data);
       this.coins = res.data;
+
+      const { value } = await Storage.get({ key: 'favorites' });
+
+      if (value) {
+        for (let item of JSON.parse(value)) {
+          for (let coin of this.coins) {
+            if (item.id === coin.id) {
+              if (item.favorite) {
+                coin.favorite = true;
+              }
+            }
+          }
+        }
+      }
     });
   }
 
@@ -54,6 +68,7 @@ export class Tab1Page implements OnInit {
     }
 
     await Storage.set({ key: 'favorites', value: JSON.stringify(favorites) });
+    this.coinService.setStateFavorites();
   }
 
   async showToast(message: string) {
@@ -63,5 +78,25 @@ export class Tab1Page implements OnInit {
     });
 
     await toast.present();
+  }
+
+  doRefresh(ev) {
+    this.coinService.getCoins().subscribe((res) => {
+      this.coins = res.data;
+      ev.target.complete();
+    });
+  }
+
+  searchCoin(searchTerm: string) {
+    console.log(searchTerm);
+    if (searchTerm.length > 3) {
+      this.coins = this.coins.filter((item) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    } else {
+      this.coinService.getCoins().subscribe((res) => {
+        this.coins = res.data;
+      });
+    }
   }
 }

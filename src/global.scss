@@ -36,3 +36,13 @@ ion-content {
   justify-content: center;
   align-items: center;
 }
+
+.refresh.refresher-native {
+  ion-spinner {
+    color: var(--ion-color-warning) !important;
+  }
+
+  .arrow-container ion-icon {
+    color: var(--ion-color-warning) !important;
+  }
+}

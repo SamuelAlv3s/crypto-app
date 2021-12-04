@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ResponseCoinsApi } from '../interfaces/coins.interface';
 
@@ -8,6 +8,9 @@ import { ResponseCoinsApi } from '../interfaces/coins.interface';
   providedIn: 'root',
 })
 export class CoinService {
+  private favoritesUpdated: BehaviorSubject<boolean> = new BehaviorSubject(
+    null
+  );
   constructor(private httpClient: HttpClient) {}
 
   getCoins(): Observable<ResponseCoinsApi> {
@@ -20,5 +23,13 @@ export class CoinService {
       'https://data.messari.io/api/v2/assets',
       httpOptions
     );
+  }
+
+  getStateFavorites(): Observable<boolean> {
+    return this.favoritesUpdated.asObservable();
+  }
+
+  setStateFavorites() {
+    this.favoritesUpdated.next(true);
   }
 }

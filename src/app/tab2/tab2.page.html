@@ -1,275 +1,41 @@
 <ion-content>
-  <ion-card class="ion-margin-bottom">
+  <ion-card class="ion-margin-bottom" *ngFor="let coin of favorites">
     <div class="card-header">
       <div class="coin">
-        <span>BTC</span>
+        <span>{{coin.symbol}}</span>
       </div>
-      <span class="coin-name">Bitcoin</span>
+      <span class="coin-name">{{coin.name}}</span>
     </div>
     <ion-card-content>
       <ion-label>
         <b>CMC Rank: </b>
-        <span>1</span>
+        <span>{{coin.metrics.marketcap.rank}}</span>
       </ion-label>
       <ion-label>
         <b>Price: </b>
-        <span>$54105.96</span>
+        <span>{{coin.metrics.market_data.price_usd | currency}}</span>
       </ion-label>
       <ion-label>
         <b>Last Update: </b>
-        <span>11/26/2021 6:36:02 AM</span>
-      </ion-label>
-      <ion-label>
-        <b>Volume Change 24h: </b>
-        <span>$22.8981</span>
+        <span>{{coin.metrics.market_data.last_trade_at | date: 'medium'}}</span>
       </ion-label>
       <ion-label>
         <b>Percent Change 1h: </b>
-        <span>$-0.77777</span>
+        <span
+          >{{coin.metrics.market_data.percent_change_usd_last_1_hour |
+          currency}}</span
+        >
       </ion-label>
       <ion-label>
-        <b>Percent Change: </b>
-        <span>24h</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 7d: </b>
-        <span>$-6.555</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 30d: </b>
-        <span>$-25.400</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 60d: </b>
-        <span>$-25.700</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 90d: </b>
-        <span>$-10.54</span>
+        <b>Percent Change 24h: </b>
+        <span
+          >{{coin.metrics.market_data.percent_change_usd_last_24_hours |
+          currency}}</span
+        >
       </ion-label>
       <ion-label>
         <b>Market Cap: </b>
-        <span>$102173057324.17</span>
-      </ion-label>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="ion-margin-bottom">
-    <div class="card-header">
-      <div class="coin">
-        <span>BTC</span>
-      </div>
-      <span class="coin-name">Bitcoin</span>
-    </div>
-    <ion-card-content>
-      <ion-label>
-        <b>CMC Rank: </b>
-        <span>1</span>
-      </ion-label>
-      <ion-label>
-        <b>Price: </b>
-        <span>$54105.96</span>
-      </ion-label>
-      <ion-label>
-        <b>Last Update: </b>
-        <span>11/26/2021 6:36:02 AM</span>
-      </ion-label>
-      <ion-label>
-        <b>Volume Change 24h: </b>
-        <span>$22.8981</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 1h: </b>
-        <span>$-0.77777</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change: </b>
-        <span>24h</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 7d: </b>
-        <span>$-6.555</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 30d: </b>
-        <span>$-25.400</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 60d: </b>
-        <span>$-25.700</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 90d: </b>
-        <span>$-10.54</span>
-      </ion-label>
-      <ion-label>
-        <b>Market Cap: </b>
-        <span>$102173057324.17</span>
-      </ion-label>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="ion-margin-bottom">
-    <div class="card-header">
-      <div class="coin">
-        <span>BTC</span>
-      </div>
-      <span class="coin-name">Bitcoin</span>
-    </div>
-    <ion-card-content>
-      <ion-label>
-        <b>CMC Rank: </b>
-        <span>1</span>
-      </ion-label>
-      <ion-label>
-        <b>Price: </b>
-        <span>$54105.96</span>
-      </ion-label>
-      <ion-label>
-        <b>Last Update: </b>
-        <span>11/26/2021 6:36:02 AM</span>
-      </ion-label>
-      <ion-label>
-        <b>Volume Change 24h: </b>
-        <span>$22.8981</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 1h: </b>
-        <span>$-0.77777</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change: </b>
-        <span>24h</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 7d: </b>
-        <span>$-6.555</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 30d: </b>
-        <span>$-25.400</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 60d: </b>
-        <span>$-25.700</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 90d: </b>
-        <span>$-10.54</span>
-      </ion-label>
-      <ion-label>
-        <b>Market Cap: </b>
-        <span>$102173057324.17</span>
-      </ion-label>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="ion-margin-bottom">
-    <div class="card-header">
-      <div class="coin">
-        <span>BTC</span>
-      </div>
-      <span class="coin-name">Bitcoin</span>
-    </div>
-    <ion-card-content>
-      <ion-label>
-        <b>CMC Rank: </b>
-        <span>1</span>
-      </ion-label>
-      <ion-label>
-        <b>Price: </b>
-        <span>$54105.96</span>
-      </ion-label>
-      <ion-label>
-        <b>Last Update: </b>
-        <span>11/26/2021 6:36:02 AM</span>
-      </ion-label>
-      <ion-label>
-        <b>Volume Change 24h: </b>
-        <span>$22.8981</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 1h: </b>
-        <span>$-0.77777</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change: </b>
-        <span>24h</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 7d: </b>
-        <span>$-6.555</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 30d: </b>
-        <span>$-25.400</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 60d: </b>
-        <span>$-25.700</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 90d: </b>
-        <span>$-10.54</span>
-      </ion-label>
-      <ion-label>
-        <b>Market Cap: </b>
-        <span>$102173057324.17</span>
-      </ion-label>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="ion-margin-bottom">
-    <div class="card-header">
-      <div class="coin">
-        <span>BTC</span>
-      </div>
-      <span class="coin-name">Bitcoin</span>
-    </div>
-    <ion-card-content>
-      <ion-label>
-        <b>CMC Rank: </b>
-        <span>1</span>
-      </ion-label>
-      <ion-label>
-        <b>Price: </b>
-        <span>$54105.96</span>
-      </ion-label>
-      <ion-label>
-        <b>Last Update: </b>
-        <span>11/26/2021 6:36:02 AM</span>
-      </ion-label>
-      <ion-label>
-        <b>Volume Change 24h: </b>
-        <span>$22.8981</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 1h: </b>
-        <span>$-0.77777</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change: </b>
-        <span>24h</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 7d: </b>
-        <span>$-6.555</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 30d: </b>
-        <span>$-25.400</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 60d: </b>
-        <span>$-25.700</span>
-      </ion-label>
-      <ion-label>
-        <b>Percent Change 90d: </b>
-        <span>$-10.54</span>
-      </ion-label>
-      <ion-label>
-        <b>Market Cap: </b>
-        <span>$102173057324.17</span>
+        <span>{{coin.metrics.marketcap.current_marketcap_usd | currency}}</span>
       </ion-label>
     </ion-card-content>
   </ion-card>
