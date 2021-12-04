@@ -32,7 +32,7 @@ export class ModalUserInfoComponent implements OnInit {
   }
 
   async sellCoin(coin: Coin) {
-    this.wallet = this.wallet.filter((item) => item.name !== coin.name);
+    this.wallet.splice(this.wallet.indexOf(coin), 1);
     this.userMoney += coin.metrics.market_data.price_usd;
     await Storage.set({ key: 'wallet', value: JSON.stringify(this.wallet) });
     await Storage.set({
