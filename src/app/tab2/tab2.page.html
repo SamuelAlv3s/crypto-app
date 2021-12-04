@@ -39,4 +39,10 @@
       </ion-label>
     </ion-card-content>
   </ion-card>
+  <div class="container-no-favorites" *ngIf="!favorites.length" color="warning">
+    <ion-item color="warning">
+      <ion-icon name="sad-outline" slot="start" color="light"></ion-icon>
+      <ion-label color="light">No Favorites Yet</ion-label>
+    </ion-item>
+  </div>
 </ion-content>

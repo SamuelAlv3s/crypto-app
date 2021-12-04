@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="close-icon" (click)="closeModal()">
+    <ion-icon name="close" color="warning"></ion-icon>
+  </div>
+  <div class="profile">
+    <div class="container-icon">
+      <ion-icon name="person"></ion-icon>
+    </div>
+    <b>Bill</b>
+    <p>example@gmail.com</p>
+  </div>
+  <div class="money ion-margin-bottom">
+    <img src="assets/coin.png" />
+    <p>{{ userMoney | currency }}</p>
+  </div>
+  <div class="wallet">
+    <b>Currency Wallet: </b>
+
+    <ion-card class="ion-margin-bottom ion-padding" *ngFor="let coin of wallet">
+      <div class="card">
+        <div class="coin">
+          <span>{{ coin.symbol }}</span>
+        </div>
+        <span class="coin-name">{{ coin.name }}</span>
+        <span class="coin-price"
+          >Purchase Price:
+          <b>{{ coin.metrics.market_data.price_usd | currency }}</b></span
+        >
+      </div>
+      <div class="buttons">
+        <ion-button color="warning" size="medium" (click)="redirectToBuy()">
+          <ion-label color="light"> Buy </ion-label>
+        </ion-button>
+        <ion-button color="warning" size="medium" (click)="sellCoin(coin)">
+          <ion-label color="light"> Sell </ion-label>
+        </ion-button>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@capacitor/storage';
-import { ToastController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { Coin } from '../interfaces/coins.interface';
+import { ModalUserInfoComponent } from '../modal-user-info/modal-user-info.component';
 import { CoinService } from '../services/coin.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class Tab1Page implements OnInit {
   public userMoney;
   constructor(
     private coinService: CoinService,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private modalCtrl: ModalController
   ) {}
 
   async ngOnInit() {
@@ -137,6 +139,33 @@ export class Tab1Page implements OnInit {
       } else {
         this.showToast('Insufficient funds');
       }
+    }
+  }
+
+  async showModalUserInfo() {
+    const { value } = await Storage.get({ key: 'wallet' });
+    let wallet = [];
+    if (value) {
+      wallet = JSON.parse(value);
+    }
+    const modal = await this.modalCtrl.create({
+      component: ModalUserInfoComponent,
+      componentProps: {
+        userMoney: this.userMoney,
+        wallet,
+      },
+    });
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+
+    if (data) {
+      if (data.getCoins) {
+        this.coinService.getCoins().subscribe((res) => {
+          this.coins = res.data;
+        });
+      }
+      this.userMoney = data.currentUserMoney;
     }
   }
 }
