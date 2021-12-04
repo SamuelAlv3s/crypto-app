@@ -1,36 +1,3 @@
-// export interface ResponseCoinsApi {
-//   status: Status;
-//   data: Coin[];
-// }
-
-// export interface Status {
-//   elapsed: number;
-//   timestamp: string;
-// }
-
-// export interface Coin {
-//   id: string;
-//   exchange_id: string;
-//   base_asset_id: string;
-//   quote_asset_id: string;
-//   class: string;
-//   trade_start?: string;
-//   trade_end?: string;
-//   version: number;
-//   excluded_from_price: boolean;
-//   exchange_name: string;
-//   exchange_slug: string;
-//   base_asset_symbol: string;
-//   quote_asset_symbol: string;
-//   pair: string;
-//   price_usd?: number;
-//   vwap_weight: number;
-//   volume_last_24_hours?: number;
-//   has_real_volume: boolean;
-//   deviation_from_vwap_percent?: number;
-//   last_trade_at?: string;
-// }
-
 export interface ResponseCoinsApi {
   status: Status;
   data: Coin[];
