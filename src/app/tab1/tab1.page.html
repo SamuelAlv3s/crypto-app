@@ -15,7 +15,7 @@
       <ion-label>
         <b>Bill</b>
         <p>
-          <span>$18,947.86</span>
+          <span>{{userMoney | currency}}</span>
         </p>
       </ion-label>
     </ion-item>
@@ -52,7 +52,11 @@
           ></ion-icon>
         </div>
       </div>
-      <ion-button color="warning" class="ion-margin-top">
+      <ion-button
+        color="warning"
+        class="ion-margin-top"
+        (click)="buyCoin(coin)"
+      >
         <ion-label color="light"> Buy </ion-label>
       </ion-button>
     </ion-card>
