@@ -1,6 +1,10 @@
 <ion-content>
   <ng-template [ngIf]="news">
-    <div class="custom-card" *ngFor="let article of news">
+    <div
+      class="custom-card"
+      *ngFor="let article of news"
+      (click)="openNewsDetails(article)"
+    >
       <img *ngIf="article.urlToImage" [src]="article.urlToImage" />
       <div *ngIf="!article.urlToImage" class="no-image"></div>
       <span class="date">{{article.publishedAt | date: 'medium'}}</span>

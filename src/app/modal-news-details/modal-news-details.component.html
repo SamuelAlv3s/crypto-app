@@ -1,0 +1,20 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <div class="container-close" (click)="closeModal()">
+        <ion-icon name="close" color="warning"></ion-icon>
+      </div>
+      <img [src]="article.urlToImage" alt="" />
+      <ion-card-subtitle>{{ article.author }}</ion-card-subtitle>
+      <ion-card-title>
+        {{ article.title }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ article.description }}</p>
+      <p class="ion-text-wrap">{{ article.content }}</p>
+      <br />
+      <span>{{ article.publishedAt | date: "medium" }}</span>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
