@@ -121,7 +121,7 @@ export class Tab1Page implements OnInit {
 
   searchCoin(searchTerm: string) {
     console.log(searchTerm);
-    if (searchTerm.length > 3) {
+    if (searchTerm.length > 2) {
       this.coins = this.coins.filter((item) =>
         item.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
